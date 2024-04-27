@@ -201,7 +201,7 @@ export const getUserDetail = async ({ userId }: GetUserDetailProps) => {
 
     const user: UserDetailType = result.data
 
-    return { success: true, user}
+    return { success: true, user }
 }
 
 interface UpdateUserProps {
