@@ -11,18 +11,18 @@ class UserAdminCustom(UserAdmin):
         (
             None,
             {
-                'fields': (
-                    'uid',
-                    'name',
-                    'email',
-                    'password',
-                    'avatar',
-                    'introduction',
-                    'is_active',
-                    'is_staff',
-                    'is_superuser',
-                    'updated_at',
-                    'created_at',
+                "fields": (
+                    "uid",
+                    "name",
+                    "email",
+                    "password",
+                    "avatar",
+                    "introduction",
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "updated_at",
+                    "created_at",
                 )
             },
         ),
@@ -33,15 +33,15 @@ class UserAdminCustom(UserAdmin):
         (
             None,
             {
-                'classes': ('wide',),
-                'fields': (
-                    'name',
-                    'email',
-                    'password1',
-                    'password2',
-                    'is_active',
-                    'is_staff',
-                    'is_superuser',
+                "classes": ("wide",),
+                "fields": (
+                    "name",
+                    "email",
+                    "password1",
+                    "password2",
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
                 ),
             },
         ),
@@ -49,26 +49,26 @@ class UserAdminCustom(UserAdmin):
 
     # 一覧
     list_display = (
-        'uid',
-        'name',
-        'email',
-        'is_active',
-        'updated_at',
-        'created_at',
+        "uid",
+        "name",
+        "email",
+        "is_active",
+        "updated_at",
+        "created_at",
     )
 
     list_filter = ()
     # 検索
     search_fields = (
-        'uid',
-        'email',
+        "uid",
+        "email",
     )
     # 順番
-    ordering = ('updated_at',)
+    ordering = ("updated_at",)
     # リンク
-    list_display_links = ('uid', 'name', 'email')
+    list_display_links = ("uid", "name", "email")
     # 編集不可
-    readonly_fields = ('updated_at', 'created_at', 'uid')
+    readonly_fields = ("updated_at", "created_at", "uid")
 
 
 admin.site.register(User, UserAdminCustom)

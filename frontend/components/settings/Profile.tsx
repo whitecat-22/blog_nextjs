@@ -174,7 +174,7 @@ const Profile = ({ user }: ProfileProps) => {
                             <FormItem>
                                 <FormLabel>自己紹介</FormLabel>
                                 <FormControl>
-                				    <Textarea placeholder="自己紹介" {...field} rows={10} />
+                                    <Textarea placeholder="自己紹介" {...field} rows={10} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

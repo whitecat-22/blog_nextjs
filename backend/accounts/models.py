@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         # メールアドレスの検証
         if not email:
-            raise ValueError('メールアドレスは必須です')
+            raise ValueError("メールアドレスは必須です")
 
         # メールアドレスの正規化
         email = self.normalize_email(email)
@@ -40,15 +40,15 @@ class UserManager(BaseUserManager):
 
 # カスタムユーザーアカウントモデル
 class UserAccount(AbstractBaseUser, PermissionsMixin):
-    uid = models.CharField('uid', max_length=30, unique=True)
-    email = models.EmailField('メールアドレス', max_length=255, unique=True)
-    name = models.CharField('名前', max_length=255)
+    uid = models.CharField("uid", max_length=30, unique=True)
+    email = models.EmailField("メールアドレス", max_length=255, unique=True)
+    name = models.CharField("名前", max_length=255)
     avatar = models.ImageField(
-        upload_to='avatar', verbose_name='プロフィール画像', null=True, blank=True
+        upload_to="avatar", verbose_name="プロフィール画像", null=True, blank=True
     )
-    introduction = models.TextField('自己紹介', null=True, blank=True)
-    updated_at = models.DateTimeField('更新日', auto_now=True)
-    created_at = models.DateTimeField('作成日', auto_now_add=True)
+    introduction = models.TextField("自己紹介", null=True, blank=True)
+    updated_at = models.DateTimeField("更新日", auto_now=True)
+    created_at = models.DateTimeField("作成日", auto_now_add=True)
 
     # アクティブ状態とスタッフ権限フィールド
     is_active = models.BooleanField(default=True)
@@ -56,12 +56,12 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     # ユーザーマネージャーと認証フィールドの設定
     objects = UserManager()
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name"]
 
     class Meta:
-        verbose_name = 'ユーザーアカウント'
-        verbose_name_plural = 'ユーザーアカウント'
+        verbose_name = "ユーザーアカウント"
+        verbose_name_plural = "ユーザーアカウント"
 
     def __str__(self):
         return self.name
@@ -72,6 +72,6 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 def generate_random_user_uid(sender, instance, created, **kwargs):
     # 新規作成時にランダムUIDを生成
     if created:
-        hashids = Hashids(salt='xRXSMT8XpzdUbDNM9qkv6JzUezU64D4Z', min_length=8)
+        hashids = Hashids(salt="xRXSMT8XpzdUbDNM9qkv6JzUezU64D4Z", min_length=8)
         instance.uid = hashids.encode(instance.id)
         instance.save()

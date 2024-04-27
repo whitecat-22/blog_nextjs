@@ -11,4 +11,4 @@ class UserDetailView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
-    lookup_field = 'uid'
+    lookup_field = "uid"

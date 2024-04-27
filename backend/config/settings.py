@@ -39,55 +39,56 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'djoser',
-    'accounts',
-    'cloudinary',
-    'cloudinary_storage',
-    'corsheaders',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "djoser",
+    "accounts",
+
+    "cloudinary",
+    "cloudinary_storage",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 # 本番環境では、CORS_ALLOWED_ORIGINSを指定する
 # CORS_ALLOWED_ORIGINS = []
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
@@ -100,11 +101,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #    }
 #}
 
-default_dburl = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
+default_dburl = "sqlite:///" + str(BASE_DIR / "db.sqlite3")
 
 # 本番環境では、DATABASE_URLにPostgreSQLのURLを指定する
 DATABASES = {
-    'default': config("DATABASE_URL", default=default_dburl, cast=dburl),
+    "default": config("DATABASE_URL", default=default_dburl, cast=dburl),
 }
 
 
@@ -113,16 +114,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -130,9 +131,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = "ja"
 
-TIME_ZONE = 'Asia/Tokyo'
+TIME_ZONE = "Asia/Tokyo"
 
 USE_I18N = True
 
@@ -142,104 +143,104 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-# Cloudinaryを使用（画像のアップロード先）
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Cloudinaryを使用
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUDINARY_NAME'),
-    'API_KEY': env('CLOUDINARY_API_KEY'),
-    'API_SECRET': env('CLOUDINARY_API_SECRET'),
+    "CLOUD_NAME": env("CLOUDINARY_NAME"),
+    "API_KEY": env("CLOUDINARY_API_KEY"),
+    "API_SECRET": env("CLOUDINARY_API_SECRET"),
 }
 
-# メール送信設定
-EMAIL_BACKEND = env('EMAIL_BACKEND')
-EMAIL_HOST = env('EMAIL_HOST')
+# メール設定
+EMAIL_BACKEND = env("EMAIL_BACKEND")
+EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = 587
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
 # Rest Framework 設定
 REST_FRAMEWORK = {
     # 認証が必要
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ],
     # JWT認証
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     # 日付
-    'DATETIME_FORMAT': '%Y/%m/%d %H:%M',
+    "DATETIME_FORMAT": "%Y/%m/%d %H:%M",
 }
 
 # JWT設定
 SIMPLE_JWT = {
     # アクセストークン
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     # リフレッシュトークン
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
     # 認証タイプ
-    'AUTH_HEADER_TYPES': ('JWT',),
+    "AUTH_HEADER_TYPES": ("JWT",),
     # 認証トークン
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
 }
 
 # Djoser設定（Django用認証ライブラリ）
 DJOSER = {
     # メールアドレスでログイン
-    'LOGIN_FIELD': 'email',
+    "LOGIN_FIELD": "email",
     # アカウント本登録メール
-    'SEND_ACTIVATION_EMAIL': True,
+    "SEND_ACTIVATION_EMAIL": True,
     # アカウント本登録完了メール
-    'SEND_CONFIRMATION_EMAIL': True,
+    "SEND_CONFIRMATION_EMAIL": True,
     # メールアドレス変更完了メール
-    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    "USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
     # パスワード変更完了メール
-    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
     # アカウント登録時に確認用パスワード必須
-    'USER_CREATE_PASSWORD_RETYPE': True,
+    "USER_CREATE_PASSWORD_RETYPE": True,
     # メールアドレス変更時に確認用メールアドレス必須
-    'SET_USERNAME_RETYPE': True,
+    "SET_USERNAME_RETYPE": True,
     # パスワード変更時に確認用パスワード必須
-    'SET_PASSWORD_RETYPE': True,
+    "SET_PASSWORD_RETYPE": True,
     # アカウント本登録用URL
-    'ACTIVATION_URL': 'signup/{uid}/{token}',
+    "ACTIVATION_URL": "signup/{uid}/{token}",
     # パスワードリセット完了用URL
-    'PASSWORD_RESET_CONFIRM_URL': 'reset-password/{uid}/{token}',
+    "PASSWORD_RESET_CONFIRM_URL": "reset-password/{uid}/{token}",
     # カスタムユーザー用シリアライザー
-    'SERIALIZERS': {
-        'user_create': 'accounts.serializers.UserSerializer',
-        'user': 'accounts.serializers.UserSerializer',
-        'current_user': 'accounts.serializers.UserSerializer',
+    "SERIALIZERS": {
+        "user_create": "accounts.serializers.UserSerializer",
+        "user": "accounts.serializers.UserSerializer",
+        "current_user": "accounts.serializers.UserSerializer",
     },
-    'EMAIL': {
+    "EMAIL": {
         # アカウント本登録
-        'activation': 'accounts.email.ActivationEmail',
+        "activation": "accounts.email.ActivationEmail",
         # アカウント本登録完了
-        'confirmation': 'accounts.email.ConfirmationEmail',
+        "confirmation": "accounts.email.ConfirmationEmail",
         # パスワード再設定
-        'password_reset': 'accounts.email.ForgotPasswordEmail',
+        "password_reset": "accounts.email.ForgotPasswordEmail",
         # パスワード再設定確認
-        'password_changed_confirmation': 'accounts.email.ResetPasswordEmail',
+        "password_changed_confirmation": "accounts.email.ResetPasswordEmail",
     },
 }
 
 # ユーザーモデル
-AUTH_USER_MODEL = 'accounts.UserAccount'
+AUTH_USER_MODEL = "accounts.UserAccount"
 
 # サイト設定
-SITE_DOMAIN = env('SITE_DOMAIN')
-SITE_NAME = env('SITE_NAME')
+SITE_DOMAIN = env("SITE_DOMAIN")
+SITE_NAME = env("SITE_NAME")
