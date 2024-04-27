@@ -5,14 +5,14 @@ const fetchAPI = async (url: string, options: RequestInit) => {
     const apiUrl = process.env.API_URL
 
     if (!apiUrl) {
-        return { success: false, error: "API URLが設定されていません"}
+        return { success: false, error: "API URLが設定されていません" }
     }
 
     try {
         const response = await fetch(`${apiUrl}${url}`, options)
 
         if (!response.ok) {
-            return { success: false, error: "APIでエラーが発生しました"}
+            return { success: false, error: "APIでエラーが発生しました" }
         }
 
         // Content-Typeヘッダーがapplication/jsonの場合のみ、JSONを解析する
@@ -26,7 +26,7 @@ const fetchAPI = async (url: string, options: RequestInit) => {
         return { success: true }
     } catch (error) {
         console.error(error)
-        return { success: false, error: "ネットワークエラーが発生しました"}
+        return { success: false, error: "ネットワークエラーが発生しました" }
     }
 }
 
@@ -100,7 +100,6 @@ export const completeSignUp = async ({ uid, token }: CompleteSignUpProps) => {
 
     return { success: true }
 }
-
 
 interface ForgotPasswordProps {
     email: string

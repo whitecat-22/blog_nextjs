@@ -22,10 +22,10 @@ import Link from "next/link"
 // 入力データの検証ルールを定義
 const schema = z
     .object({
-        password: z.string().min(8, { message: "8文字以上入力する必要があります"}),
+        password: z.string().min(8, { message: "8文字以上入力する必要があります" }),
         repeatedPassword: z
             .string()
-            .min(8, { message: "8文字以上入力する必要があります"}),
+            .min(8, { message: "8文字以上入力する必要があります" }),
     })
     .refine((data) => data.password === data.repeatedPassword, {
         message: "新しいパスワードと確認用パスワードが一致しません",
@@ -39,7 +39,6 @@ interface ResetPasswordProps {
     uid: string
     token: string
 }
-
 
 // パスワード再設定確認
 const ResetPassword = ({ uid, token }: ResetPasswordProps) => {
@@ -85,7 +84,7 @@ const ResetPassword = ({ uid, token }: ResetPasswordProps) => {
 
     return (
         <div className="max-w-[400px] m-auto">
-{isResetPassword ? (
+            {isResetPassword ? (
                 <div className="text-center">
                     <div className="text-2xl font-bold mb-10">パスワード再設定完了</div>
 

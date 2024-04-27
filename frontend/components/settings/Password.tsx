@@ -25,16 +25,16 @@ const schema = z
     .object({
         currentPassword: z
             .string()
-            .min(3, { message: "3文字以上入力する必要があります"}),
-        password: z.string().min(3, {message: "3文字以上入力する必要があります"}),
+            .min(3, { message: "3文字以上入力する必要があります" }),
+        password: z.string().min(3, { message: "3文字以上入力する必要があります" }),
         repeatedPassword: z
             .string()
-            .min(3, { message: "3文字以上入力する必要があります"}),
-})
-.refine((data) => data.password === data.repeatedPassword, {
-    message: "新しいパスワードと確認用パスワードが一致しません",
-    path: ["repeatedPassword"],
-})
+            .min(3, { message: "3文字以上入力する必要があります" }),
+    })
+    .refine((data) => data.password === data.repeatedPassword, {
+        message: "新しいパスワードと確認用パスワードが一致しません",
+        path: ["repeatedPassword"],
+    })
 
 // 入力データの型を定義
 type InputType = z.infer<typeof schema>
@@ -50,7 +50,7 @@ const Password = ({ user }: PasswordProps) => {
 
     // フォームの状態
     const form = useForm<InputType>({
-        //入力値の検証
+        // 入力値の検証
         resolver: zodResolver(schema),
         // 初期値
         defaultValues: {

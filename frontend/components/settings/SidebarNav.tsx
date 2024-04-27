@@ -28,7 +28,7 @@ const SidebarNav = () => {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                        buttonVariants({ variant: "ghost"}),
+                        buttonVariants({ variant: "ghost" }),
                         pathname === item.href
                             ? "bg-muted hover:bg-muted"
                             : "hover:bg-transparent hover:underline",

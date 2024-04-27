@@ -21,8 +21,8 @@ import Link from "next/link"
 
 // 入力データの検証ルールを定義
 const schema = z.object({
-    email: z.string().email({ message: "メールアドレスの形式ではありません"}),
-    password: z.string().min(8, { message: "8文字以上入力する必要があります"}),
+    email: z.string().email({ message: "メールアドレスの形式ではありません" }),
+    password: z.string().min(8, { message: "8文字以上入力する必要があります" }),
 })
 
 // 入力データの型を定義

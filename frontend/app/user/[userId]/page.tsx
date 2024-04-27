@@ -3,7 +3,7 @@ import UserDetail from "@/components/user/UserDetail"
 
 interface UserDetailPageProps {
     params: {
-        userId : string
+        userId: string
     }
 }
 

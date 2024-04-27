@@ -25,7 +25,7 @@ import toast from "react-hot-toast"
 
 // 入力データの検証ルールを定義
 const schema = z.object({
-    name: z.string().min(3, { message: "3文字以上入力する必要があります"}),
+    name: z.string().min(2, { message: "2文字以上入力する必要があります" }),
     introduction: z.string().optional(),
 })
 
@@ -48,7 +48,7 @@ const Profile = ({ user }: ProfileProps) => {
 
     // フォームの状態
     const form = useForm<InputType>({
-        //入力値の検証
+        // 入力値の検証
         resolver: zodResolver(schema),
         // 初期値
         defaultValues: {
